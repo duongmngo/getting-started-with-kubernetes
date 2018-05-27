@@ -1,0 +1,52 @@
+pipeline {
+  agent any    
+  stages {
+    stage('Initilization') {
+      steps {
+        echo 'Building...'    
+        sh 'ls -lah'                
+        sh 'uname'
+        sh 'whoami'
+        sh 'printenv'
+        sh 'gcloud auth activate-service-account --key-file=/home/user/duongngo_workspace/technology-athenka.json'
+        sh 'gcloud auth configure-docker'
+      }
+    }            
+    stage("Build Container Image") {
+      steps { 
+        script {
+          sh "git rev-parse --short HEAD > commit-id" 
+          tag = readFile('commit-id').replace("\n", "").replace("\r", "")                   
+          env.BUILDIMG_FOR_PRO="gcr.io/technology-athenka/kaira.portal.customer.front-end:${tag}" 
+          env.KUBECONFIG="/home/user/duongngo_workspace/kubernetes_configs/config"
+          appName = "athenka_product_site"
+          imageName = "gcr.io/technology-athenka/${appName}:${tag}"
+          env.BUILDIMG=imageName
+          sh "docker build -t ${imageName} ."
+          sh "docker push ${imageName}"
+          if (env.GIT_BRANCH == 'origin/master') {
+            sh "docker push ${imageName}"
+          }
+        }
+      }            
+    }
+    stage("Deploy To GCP") {                        
+      when {
+        expression { env.GIT_BRANCH == 'origin/master' }
+      }      
+      steps {
+        sh "kubectl config view"
+        sh "kubectl config --kubeconfig=$KUBECONFIG view"
+        sh "kubectl config --kubeconfig=$KUBECONFIG use-context production"
+        sh "kubectl config --kubeconfig=$KUBECONFIG current-context"
+        sh "sed 's#__IMAGE__#'$BUILDIMG'#' deployment.yaml | kubectl --kubeconfig=$KUBECONFIG apply -f -"
+      }           
+    }
+    stage("Clean workspace") { 
+      steps {
+        deleteDir()
+        sh 'ls -lah'
+      }
+    }
+  }
+}
