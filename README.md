@@ -35,5 +35,3 @@
     -   helm
     -   Google Kubernetes Engine
     -   etcd
-## Resources
-## Q&A

@@ -26,25 +26,9 @@ spec:
           - name: WORDPRESS_DB_HOST
             value: mysql:3306
           - name: WORDPRESS_DB_PASSWORD
-            value: "A@#134adWM%@##4"  
+            value: "root"  
           - name: WORDPRESS_DB_NAME
-            value: "athenka"              
+            value: "root"              
           ports:
             - containerPort: 80
               name: wordpress
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: wordpress
-  name: wordpress
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  selector:
-    app: wordpress            
