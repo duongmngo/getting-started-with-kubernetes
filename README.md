@@ -1,18 +1,24 @@
 ## Objective
 - Kubernetes overview
-- Audience know to step by step master K8s and ignore unnecessary parts when getting started with Kubernetes
+- Know to step by step master K8s and ignore unnecessary parts when getting started with Kubernetes
 - Use Kubernetes to make a real-world (WordPress) application scalable and auto scaling
 ## Prior knowledge:
-- What is container ?
-- What is a orchestration platform ? 
+- What is container, VM?
+    - Basically, containers and VM are similar in their goals. They support to isolate an application into a container unit and run it, re-use it everywhere. Container and VM support simulate the physical hardware.
+    - The main difference between container and VMs is in their architectural approach.
+    - reference: https://medium.freecodecamp.org/a-beginner-friendly-introduction-to-containers-vms-and-docker-79a9e3e119b    
+- What is a orchestration platform? 
     - List a few container orchestrators platform: Kubernetes, Docker Swarm, Mesospher,...
 ## Kubernetes Overview:
 - Kubernetes: What and Why
 - Kubernetes node architecture
 - Kubernetes cluster
     - What is kubernetes cluster?
+        - 
     - List some kind of clusters.
-    - Set up Kubernetes Cluster on local using minikube (Single node cluster).
+        - 
+    - Set up Kubernetes Cluster on local using minikube (Single node cluster)
+    - Setup minikube: https://github.com/kubernetes/minikube        
 - Pods.
     -  Introduction
     -  Example
