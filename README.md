@@ -35,6 +35,18 @@
 -  Service Discovery - DNS
     -   Introduction
     -   Demo
+-  Storage
+    - On-disk files in a Container are ephemeral
+    - When a Container crashes, kubelet will restart it, but the files will be lost
+    - When running Containers together in a Pod it is often necessary to share files between those Containers
+    - It will be solved by PersistentVolume, PersistenVolumeClaim
+    - Kubernetes supports several types of Volumes:
+        - awsElasticBlockStore
+        - gcePersistentDisk
+        - azureDisk      
+        - persistentVolumeClaim
+        - ...     
+    - PersistentVolume, PersistentVolumeClaim provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed
 - Auto Scaling
 - Network
     - ClusterIp, NodePort, LoadBalancer

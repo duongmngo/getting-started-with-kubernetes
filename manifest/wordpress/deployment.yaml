@@ -20,7 +20,7 @@ spec:
         app: wordpress
     spec:
       containers:
-        - image: __IMAGE__
+        - image: duongngo/wordpress_k8s:v1_06_16_2018
           name: wordpress
           env:
           - name: WORDPRESS_DB_HOST
