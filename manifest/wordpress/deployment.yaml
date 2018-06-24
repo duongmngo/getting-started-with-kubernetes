@@ -28,7 +28,7 @@ spec:
           - name: WORDPRESS_DB_PASSWORD
             value: "root"  
           - name: WORDPRESS_DB_NAME
-            value: "root"              
+            value: "wordpress"              
           ports:
             - containerPort: 80
               name: wordpress
