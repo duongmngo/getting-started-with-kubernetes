@@ -1,0 +1,1 @@
+Without this folder, container could not start successfully
