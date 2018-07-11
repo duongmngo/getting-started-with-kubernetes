@@ -11,23 +11,42 @@
     - List a few container orchestrators platform: Kubernetes, Docker Swarm, Mesospher,...
 ## Kubernetes Overview:
 - Kubernetes: What and Why
-- Kubernetes node architecture
 - Kubernetes cluster
     - What is Kubernetes cluster?
-        - 
     - List some kind of Kubernetes Cluster.
         - Google Kubernetes Engine.
     - Set up Kubernetes Cluster on local using minikube (Single node cluster)
     - Setup minikube: https://github.com/kubernetes/minikube        
         - Follow the guide to install minikube, I will also install kubectl in your CLI.
         - kubectl support to interact with Kubernetes cluster. You can work with multiple Kubernetes cluster and switch the current context (current kubernetes cluster)
+- Kubernetes node architecture
+    - Image resource: https://d33wubrfki0l68.cloudfront.net/e298a92e2454520dddefc3b4df28ad68f9b91c6f/70d52/images/docs/pre-ccm-arch.png
+    - Master-Node communication    
+        - Cluster --> Master
+        - Master -> Cluster
+            - apiserver -> kubelet
+            - apiserver -> nodes, pods, and services
+    - Overview how it works from: Kubectl -> API Server --> (Backend process: Ectd + Scheduler + Controller) --> Kubelet
+    - What is Kubernetes API Object? What is the format? How Kubectl sends it to API Server?
 - Pods.
-    -  Introduction
-    -  Example
+    - Introduction
+        - Pod is the basic buiding block of Kubernetes - The smallest and simplest unit in the kubernetes object.
+        - Pods are the smallest deployable units of computing that can be created and managed in Kubernetes.
+        - Pod encapsulates application containers.
+        - We will rarely create individual pods directly in Kubernetes. Because Pods is ephemeral, so we often use some kind of Pod Controller (Higher-level abtraction) to manage Pods.
+        - Some kind of Pods Controller: Deployment, Statefulset, DaemonSet
+    - Example without demo
 - Deployment
     - Introduction
-    - Example
-    - Demo apply a Deployment API Object
+        - Reason we need ReplicaSet, Replication Controller, Development.
+            - Don't need to use ReplicaSet, Replication Controller now. Forget them and go ahead to use Deployment
+            - Replication Controller --- Next Generation ---> ReplicaSet ---> Development (higher-level concept that manage ReplicaSet)       
+    - Example with demo
+- Some special Controllers: 
+    - StatefulSets        
+        -  If an application doesn’t require any stable identifiers or ordered deployment, deletion, or scaling, you should deploy your application with a controller that provides a set of stateless replicas.
+    - DaemonSet
+        - Brief when we use it: DaemonSet ensures that all Node run a copy of a Pod.        
 - Service 
     -  Introduction
     -  Example
@@ -45,9 +64,11 @@
         - gcePersistentDisk
         - azureDisk      
         - persistentVolumeClaim
-        - ...     
+        - ...
     - PersistentVolume, PersistentVolumeClaim provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed
 - Auto Scaling
+    - Container resource request and limit
+    - Example 
 - Network
     - ClusterIp, NodePort, LoadBalancer
 - How K8s integrate with CI/CD pipeline
