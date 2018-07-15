@@ -2,10 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: wordpress
-  labels:
-    app: wordpress
 spec:
-  replicas: 1
+  replicas: 4
   strategy: 
     type: RollingUpdate
     rollingUpdate:

@@ -1,16 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mysql
-  labels:
-    app: mysql
+  name: mysql  
 spec:
-  replicas: 1
-  strategy: 
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
+  replicas: 1  
   selector:
     matchLabels:
       app: mysql

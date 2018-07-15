@@ -12,7 +12,6 @@
     - The main difference between container and VMs is in their architectural approach.
     - reference: https://medium.freecodecamp.org/a-beginner-friendly-introduction-to-containers-vms-and-docker-79a9e3e119b    
 --> 
-
 ## Prior knowledges
 - What is a orchestration platform? 
     - Orchestrators platform: Kubernetes, Docker Swarm,...
@@ -39,10 +38,9 @@
     - What is Kubernetes API Object? What is the format? How Kubectl sends it to API Server?
     - 
 ## Pods.    
-- Pod is the basic buiding block of Kubernetes - The smallest and simplest unit in the kubernetes object.
+- Pod is the basic buiding block of Kubernetes.
 - Pods are the smallest deployable units of computing that can be created and managed in Kubernetes.
 - Pod encapsulates application containers.
-- We will rarely create individual pods directly in Kubernetes. Because Pods is ephemeral, so we often use some kind of Pod
 
 ## Pod Controllers
 - Higher-level abtraction to manage Pods.
@@ -82,6 +80,9 @@
     - ...
 - PersistentVolume, PersistentVolumeClaim provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed
 ## Horizontal Pod Autoscaler
+- The Horizontal Pod Autoscaler is an API resource in the Kubernetes autoscaling API group. The current stable version, which only includes support for CPU autoscaling, can be found in the autoscaling/v1 API version.
+- The Horizontal Pod Autoscaler automatically scales the number of pods in a replication controller, deployment or replica set based on observed CPU utilization (or, with custom metrics support, on some other application-provided metrics).
+- kubectl autoscale rc foo --min=2 --max=5 --cpu-percent=80 
 
 ## Network
 - ClusterIp
