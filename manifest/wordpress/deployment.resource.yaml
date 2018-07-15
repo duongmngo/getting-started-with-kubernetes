@@ -20,7 +20,7 @@ spec:
         app: wordpress
     spec:
       containers:
-        - image: duongngo/wordpress_k8s:demo_v1
+        - image: duongngo/wordpress_k8s:v1_06_16_2018
           name: wordpress
           env:
           - name: WORDPRESS_DB_HOST
@@ -32,3 +32,10 @@ spec:
           ports:
             - containerPort: 80
               name: wordpress
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"    

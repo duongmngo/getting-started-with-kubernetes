@@ -5,10 +5,10 @@ metadata:
     app: wordpress
   name: wordpress
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
-      targetPort: 80
+      nodePort: 32002
       protocol: TCP
   selector:
-    app: wordpress            
+    app: wordpress
